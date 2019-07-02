@@ -10,15 +10,13 @@ const Wode = Loadable({
     // 加载中的提示组件
     loading: () => <div>加载中</div>
   });
-  
+
   export default class App extends Component {
     render() {
       return (
         <Router>
           <Switch>
-            <Route path="/wode" component={Wode} />
-            {/* <Route path="/sign" component={Sign} />
-            <AuthRoute path="/" component={Home} /> */}
+            <Route path="/wode" exact component={Wode} />
           </Switch>
         </Router>
       );
