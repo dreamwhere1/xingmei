@@ -1,0 +1,1 @@
+export const SET_FILM_LIST="set_film_list";
