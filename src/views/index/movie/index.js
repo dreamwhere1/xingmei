@@ -13,7 +13,7 @@ class Film extends Component {
   }
   render() {
     function callback(key) {
-      console.log(key)
+      // console.log(key)
     }
 
     return (

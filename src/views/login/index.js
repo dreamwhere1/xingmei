@@ -43,14 +43,14 @@ class Login extends React.Component {
   handleSubmit = e => {
     let inputVal = this.props.inputVal
     let password = this.props.password
-    let userList = this.props.userList
-    console.log(userList)
+    // let userList = this.props.userList
+    // console.log(userList)
     //   console.log(inputVal);
     if (!inputVal) {
       this.setState({ check: 'block' })
     }
     if (!password) {
-      console.log('abc')
+      // console.log('abc')
       this.setState({ check2: 'block' })
     }
   }
@@ -281,7 +281,7 @@ export default connect(
     },
     chgPassword(e) {
       let password = e.target.value
-      console.log(password)
+      // console.log(password)
       dispatch(actions.onPassword(password))
     }
   })
