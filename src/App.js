@@ -1,24 +1,50 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { HashRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
+import Loadable from 'react-loadable'
+import { Loading } from 'element-react/next'
 
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import '@/untils/standard.less'
+import 'element-theme-default'
 
-import Loadable from 'react-loadable';
-
-const Wode = Loadable({
-    // 需要异步加载的组件
-    loader: () => import('./views/Wode'),
-    // 加载中的提示组件
-    loading: () => <div>加载中</div>
-  });
-
-  export default class App extends Component {
-    render() {
-      return (
-        <Router>
-          <Switch>
-            <Route path="/wode" exact component={Wode} />
-          </Switch>
-        </Router>
-      );
-    }
+export default class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route
+            exact
+            path="/search"
+            component={Loadable({
+              loader: () => import('@/views/search'),
+              loading: () => <Loading fullscreen text="玩命加载中..." />
+            })}
+          />
+          <Route
+            exact
+            path="/detail/:id"
+            component={Loadable({
+              loader: () => import('@/views/detail'),
+              loading: () => <Loading fullscreen text="玩命加载中..." />
+            })}
+          />
+          <Route
+            exact
+            path="/login"
+            component={Loadable({
+              loader: () => import('@/views/login'),
+              loading: () => <Loading fullscreen text="玩命加载中..." />
+            })}
+          />
+          <Route
+            path="/"
+            component={Loadable({
+              loader: () => import('@/views'),
+              loading: () => <Loading fullscreen text="玩命加载中..." />
+            })}
+          />
+          <Redirect to="/" />
+        </Switch>
+      </Router>
+    )
   }
+}
